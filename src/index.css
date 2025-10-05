@@ -1,93 +1,230 @@
 /* Mobile-first invitation styles */
 
 :root {
-	--bg: #eefbf7; /* pale mint */
-	--accent: #5fae21; /* green used in provided design */
-	--muted: #6b8a5a;
+  --bg: #ffffff; /* white page with mint card */
+  --card-bg: #eefbf7; /* pale mint */
+  --accent: #4ca317; /* green used in provided design */
+  --muted: #5c7a4e;
+  --text: #183d1a;
+  --shadow: rgba(20, 50, 20, 0.06);
 }
 
-* { box-sizing: border-box; }
-html, body, #root { height: 100%; }
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
 body {
-	margin: 0;
-	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	background: var(--bg);
-	color: #224422;
-	-webkit-font-smoothing: antialiased;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
 
+/* Center card vertically and horizontally, and allow fixed top-right toggle */
 .invitation-root {
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 20px; /* mobile padding */
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--bg);
 }
 
+.locale-toggle-fixed {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+}
+
+/* Minimalist language toggle switch */
+:root {
+  --accent-rgb: 76,163,23; /* used for subtle track color */
+}
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+.lang-toggle:focus { outline: 3px solid rgba(var(--accent-rgb),0.12); border-radius:999px }
+.lang-toggle .toggle-track{
+  width: 44px;
+  height: 24px;
+  background: rgba(var(--accent-rgb),0.12);
+  border-radius: 999px;
+  padding: 3px;
+  box-sizing: content-box;
+  display: inline-block;
+  position: relative;
+  transition: background .18s ease;
+}
+.lang-toggle .toggle-thumb{
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  display: block;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+  transform: translateX(0);
+  transition: transform .18s ease;
+}
+.lang-toggle[aria-checked="true"] .toggle-track{ background: rgb(var(--accent-rgb)); }
+.lang-toggle[aria-checked="true"] .toggle-thumb{ transform: translateX(20px); }
+.lang-toggle .toggle-label{
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+
+.lang-toggle {
+  background: transparent;
+  border: 0;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+/* Card centered and content center-aligned */
 .card {
-	width: 100%;
-	max-width: 480px; /* keeps it narrow on phone and tablet */
-	background: transparent;
-	text-align: center;
-	position: relative;
-	padding: 36px 20px 48px;
-	border-radius: 8px;
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  padding: 32px 18px 36px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
 }
-
-.leaf {
-	position: absolute;
-	width: 110px;
-	height: auto;
-	opacity: 0.95;
-}
-.leaf.top-right { top: 8px; right: 6px; transform: rotate(12deg); }
-.leaf.bottom-left { bottom: 6px; left: 8px; transform: rotate(-6deg); }
 
 .small-muted {
-	color: var(--muted);
-	font-size: 14px;
-	margin: 6px 0;
+  color: var(--muted);
+  font-size: 13px;
+  margin: 6px 0;
 }
 
 .intro-english {
-	color: var(--accent);
-	font-weight: 600;
-	font-size: 15px;
-	margin-top: 6px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 6px;
 }
 
 .family-invite {
-	font-weight: 700;
-	color: var(--accent);
-	font-size: 18px;
-	margin: 14px 0 10px;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 17px;
+  margin: 12px 0 10px;
 }
 
 .names {
-	font-family: 'Satisfy', 'SatisfyLocal', cursive;
-	color: #4a9616;
-	font-size: 34px;
-	margin: 10px 0;
-	line-height: 1.05;
+  font-family: "Satisfy", cursive;
+  color: var(--accent);
+  font-size: 34px;
+  margin: 6px 0;
+  line-height: 1.05;
 }
-.amp { font-size: 20px; margin: 6px 0; color: var(--accent); }
+.amp {
+  font-size: 20px;
+  margin: 6px 0;
+  color: var(--accent);
+}
 
 .details {
-	margin-top: 18px;
-	color: var(--accent);
-	font-weight: 600;
-	font-size: 15px;
+  margin-top: 14px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.meta-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+}
+.meta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid rgba(76, 163, 23, 0.08);
+  color: var(--accent);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+.meta-button:focus {
+  outline: 3px solid rgba(76, 163, 23, 0.18);
+}
+.icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+}
+
+.countdown {
+  margin-top: 16px;
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.venue {
+  margin-top: 10px;
+  color: var(--text);
+  font-size: 15px;
 }
 
 /* larger screens */
 @media (min-width: 600px) {
-	.card { padding: 56px 40px 64px; }
-	.names { font-size: 46px; }
-	.family-invite { font-size: 20px; }
-	.leaf { width: 160px; }
+  .card {
+    padding: 56px 40px 64px;
+  }
+  .names {
+    font-size: 46px;
+  }
+  .family-invite {
+    font-size: 20px;
+  }
+  .leaf {
+    width: 160px;
+  }
 }
 
 @media (min-width: 900px) {
-	.card { max-width: 720px; }
-	.names { font-size: 62px; }
+  .card {
+    max-width: 720px;
+  }
+  .names {
+    font-size: 62px;
+  }
+}
+
+/* accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .leaf {
+    transition: none;
+  }
 }
