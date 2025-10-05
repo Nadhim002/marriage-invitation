@@ -1,1 +1,93 @@
-@import "tailwindcss";
+/* Mobile-first invitation styles */
+
+:root {
+	--bg: #eefbf7; /* pale mint */
+	--accent: #5fae21; /* green used in provided design */
+	--muted: #6b8a5a;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+	margin: 0;
+	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	background: var(--bg);
+	color: #224422;
+	-webkit-font-smoothing: antialiased;
+}
+
+.invitation-root {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px; /* mobile padding */
+}
+
+.card {
+	width: 100%;
+	max-width: 480px; /* keeps it narrow on phone and tablet */
+	background: transparent;
+	text-align: center;
+	position: relative;
+	padding: 36px 20px 48px;
+	border-radius: 8px;
+}
+
+.leaf {
+	position: absolute;
+	width: 110px;
+	height: auto;
+	opacity: 0.95;
+}
+.leaf.top-right { top: 8px; right: 6px; transform: rotate(12deg); }
+.leaf.bottom-left { bottom: 6px; left: 8px; transform: rotate(-6deg); }
+
+.small-muted {
+	color: var(--muted);
+	font-size: 14px;
+	margin: 6px 0;
+}
+
+.intro-english {
+	color: var(--accent);
+	font-weight: 600;
+	font-size: 15px;
+	margin-top: 6px;
+}
+
+.family-invite {
+	font-weight: 700;
+	color: var(--accent);
+	font-size: 18px;
+	margin: 14px 0 10px;
+}
+
+.names {
+	font-family: 'Satisfy', 'SatisfyLocal', cursive;
+	color: #4a9616;
+	font-size: 34px;
+	margin: 10px 0;
+	line-height: 1.05;
+}
+.amp { font-size: 20px; margin: 6px 0; color: var(--accent); }
+
+.details {
+	margin-top: 18px;
+	color: var(--accent);
+	font-weight: 600;
+	font-size: 15px;
+}
+
+/* larger screens */
+@media (min-width: 600px) {
+	.card { padding: 56px 40px 64px; }
+	.names { font-size: 46px; }
+	.family-invite { font-size: 20px; }
+	.leaf { width: 160px; }
+}
+
+@media (min-width: 900px) {
+	.card { max-width: 720px; }
+	.names { font-size: 62px; }
+}
